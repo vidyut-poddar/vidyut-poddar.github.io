@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>AI knowledge bases that don't lie to your customers — Vidyut Poddar</title>
+  <meta name="description" content="LLMs are great at sounding confident. They are not great at being right. Here's how to actually build an AI knowledge base for support that holds up in front of customers." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="blog.css" />
+</head>
+<body>
+
+  <nav class="post-nav">
+    <div class="container">
+      <a class="back" href="../index.html">← vidyut.poddar</a>
+      <div class="meta">Oct 2025 · 6 min read</div>
+    </div>
+  </nav>
+
+  <article>
+    <div class="container">
+      <div class="post-tag">AI · Support</div>
+      <h1 class="post-title">AI knowledge bases that don't lie to your customers.</h1>
+      <p class="post-deck">LLMs are great at sounding confident. They are not great at being right. If you're putting an AI agent in front of paying customers, this is the work that has to happen before the launch, not after the first bad screenshot ends up on Twitter.</p>
+
+      <div class="post-byline">
+        <span class="author">Vidyut Poddar</span>
+        <span class="dot">·</span>
+        <span>Account Specialist @ HighLevel</span>
+      </div>
+
+      <div class="post-body">
+
+        <p>Every agency I work with wants to "add AI." Most of them want a chatbot that can answer customer questions. Some of them want a voice agent that can book appointments. A few of the more ambitious ones want both, plus an autonomous workflow that takes whatever the AI captures and routes it intelligently.</p>
+
+        <p>The thing they almost never want to do is the part of the project that determines whether any of this actually works: <strong>building a real knowledge base.</strong></p>
+
+        <p>I've helped enough teams launch AI agents to have an opinion on this. Here it is: the LLM is the easy part. The model is borrowed. The interface is borrowed. The hard, valuable, defensible part is the knowledge base. That's also the part that gets the least attention.</p>
+
+        <h2>Why this matters</h2>
+
+        <p>Large language models are extraordinary at sounding confident. They generate fluent, grammatically correct, contextually appropriate text. They do this whether or not the text is accurate.</p>
+
+        <p>In a support context, this is a problem. A model that confidently tells your customer the wrong refund policy, or invents a feature that doesn't exist, or quotes the wrong price, is worse than no AI at all. The customer trusts a confident-sounding answer. The team picks up the pieces later.</p>
+
+        <p>The fix is not "use a better model." The fix is <strong>retrieval-augmented generation</strong>: ground the model in a knowledge base of your own facts, and constrain it to use those facts. Done well, this is the difference between an agent that answers correctly 95% of the time and one that hallucinates twice an hour.</p>
+
+        <h2>What a real knowledge base looks like</h2>
+
+        <p>"We pasted our help docs into a vector store" is not a knowledge base. It's a search index. There's a difference.</p>
+
+        <p>A real knowledge base, in this context, has these properties:</p>
+
+        <ol>
+          <li><strong>Atomic articles.</strong> One concept per article. Not "Getting Started" with twelve subsections — twelve focused articles, each answering one question.</li>
+          <li><strong>Question-shaped titles.</strong> Articles named the way customers actually ask questions, not the way internal teams categorize features. "How do I cancel my subscription?" not "Subscription Lifecycle Management."</li>
+          <li><strong>Explicit out-of-scope sections.</strong> When an article covers a topic, it also lists what it <em>doesn't</em> cover, with pointers to other articles or to "talk to a human." This is the single highest-leverage move for cutting hallucinations.</li>
+          <li><strong>Last-updated dates that mean something.</strong> Stale content in the KB becomes stale answers from the AI. If you don't trust an article enough to date it, the model shouldn't be using it.</li>
+          <li><strong>Tone guidance baked in.</strong> Each article should be written in the voice the agent should reply in. The model echoes what it's grounded in.</li>
+        </ol>
+
+        <p>That's the shape. Most help docs in the wild fail at least three of these. Which is why most AI knowledge bases stitched together from existing help docs perform worse than expected.</p>
+
+        <h2>The pre-flight checklist</h2>
+
+        <p>Before letting a model talk to a customer, I run through this list with the team:</p>
+
+        <ul>
+          <li>Is every article on a single topic, or are some doing double duty?</li>
+          <li>Are there contradictions between articles? (Two different prices, two different refund windows, two different feature descriptions.)</li>
+          <li>Are there topics the agent should <em>never</em> answer? Legal advice, medical advice, anything tied to compliance — these need explicit guardrails, not "the KB doesn't have anything on this."</li>
+          <li>Do we have a "I don't know — here's how to reach a human" path that the agent can fall back to?</li>
+          <li>Are dates on articles current? (If the most recent article was edited in 2022, the answers will reflect 2022.)</li>
+          <li>Have we written what the agent should NOT say? (Outdated pricing, deprecated features, anything still in beta that hasn't shipped.)</li>
+        </ul>
+
+        <p>If the answer to any of these is "no" or "we'll figure that out after launch," the launch should slip.</p>
+
+        <h2>The prompt is the smaller half of the work</h2>
+
+        <p>I see teams pour energy into prompt engineering and almost none into knowledge base curation. That ratio is backwards. The prompt sets the agent's tone and personality. The knowledge base determines whether anything it says is true.</p>
+
+        <p>A good prompt for a support agent is short. It tells the model who it is, what it's allowed to do, and what to do when it doesn't know. Something like:</p>
+
+        <pre><code>You are a support agent for [Company]. You only answer
+questions that are clearly addressed in the provided
+knowledge base.
+
+If a customer asks about something not covered, say so
+plainly and offer to connect them with a human teammate.
+
+Do not invent features, prices, or policies. If you are
+not sure, say you are not sure.
+
+Reply in a warm, concise tone. Avoid filler.</code></pre>
+
+        <p>That's most of it. The hard work — the work that makes the agent worth deploying — happens in the knowledge base.</p>
+
+        <h2>The launch posture</h2>
+
+        <p>When I launch an AI agent with a client, the posture is always the same:</p>
+
+        <ol>
+          <li><strong>Soft launch behind a "Beta" label.</strong> Customers know they're talking to AI. The "talk to a human" button is one tap away. Always.</li>
+          <li><strong>Every conversation gets reviewed</strong> for the first 2–3 weeks. By a human. Looking for: wrong answers, confidently-said-but-uncertain answers, topics the agent shouldn't have engaged with, and topics customers wanted that the KB didn't cover.</li>
+          <li><strong>The KB grows.</strong> Every review session generates a small list of new articles or edits. The list goes to the person who owns the KB, not to "someone."</li>
+          <li><strong>Confidence comes from data, not intuition.</strong> Until you have hundreds of reviewed conversations showing the agent is reliable, treat it as in-training. After that, you can quietly remove the "Beta" label and the safety net can shrink.</li>
+        </ol>
+
+        <div class="callout">
+          <div class="callout-label">// what i tell every client</div>
+          <p style="margin:0">The model is the cheapest part of this project. The model is rented. The defensible thing — the thing that will actually make your agent better than your competitor's — is the curated knowledge base nobody else has. Invest there.</p>
+        </div>
+
+        <h2>The honest summary</h2>
+
+        <p>"Add AI" is not a project. "Curate a knowledge base good enough to be the spine of an AI support agent, then bolt the agent on" is a project. The first one fails publicly. The second one usually works.</p>
+
+        <p>If you're sitting on a SaaS product and you're thinking about putting an AI agent in front of customers, do the unsexy thing first. Audit your KB. Atomize the articles. Write the out-of-scope sections. Then bring in the agent. You'll save yourself a lot of apologetic emails.</p>
+
+        <hr class="post-divider" />
+
+        <p style="color:var(--muted); font-size:15px;"><em>If you're partway through an AI support rollout and the customer-facing answers aren't holding up, I've done enough of these to spot the usual failure modes quickly. <a href="../index.html#contact">Get in touch</a> if you want a second pair of eyes.</em></p>
+
+        <div class="post-footer">
+          <a href="../index.html#notes">← All writing</a>
+          <a href="../index.html#contact">Get in touch</a>
+          <span class="signoff">vidyut.poddar // 2025</span>
+        </div>
+      </div>
+    </div>
+  </article>
+</body>
+</html>

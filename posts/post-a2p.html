@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>A2P 10DLC, plainly explained — Vidyut Poddar</title>
+  <meta name="description" content="A2P 10DLC is the messaging compliance regime that decides whether your SMS gets delivered. Here's what it is, why most submissions fail, and the playbook that got our volume agencies from 20% to 95-100% approval." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="blog.css" />
+</head>
+<body>
+
+  <nav class="post-nav">
+    <div class="container">
+      <a class="back" href="../index.html">← vidyut.poddar</a>
+      <div class="meta">Aug 2025 · 7 min read</div>
+    </div>
+  </nav>
+
+  <article>
+    <div class="container">
+      <div class="post-tag">GHL · Messaging</div>
+      <h1 class="post-title">A2P 10DLC, plainly explained.</h1>
+      <p class="post-deck">A2P 10DLC is the messaging compliance regime that decides whether your SMS gets delivered. Most teams treat it like a form. It isn't — it's a brand-vetting process. Here's what's actually going on and the playbook I use to take volume agencies from ~20% approval to consistently 95–100%.</p>
+
+      <div class="post-byline">
+        <span class="author">Vidyut Poddar</span>
+        <span class="dot">·</span>
+        <span>Account Specialist @ HighLevel</span>
+      </div>
+
+      <div class="post-body">
+
+        <p>If you've worked with SMS at any scale on a CRM platform in the last few years, you've run into A2P 10DLC. If you haven't, here's the short version: the US carriers got tired of marketing texts pretending to be from a friend. So they put a registration regime on top of the 10-digit long codes that businesses use to send messages. You register your business (the "Brand"), you register the use case (the "Campaign"), it gets vetted, and your traffic either gets delivered, throttled, or filtered into the void.</p>
+
+        <p>The part nobody tells you is that <strong>A2P registration is not a form. It's a brand-vetting process</strong>. The form is the surface. The thing being graded is the legitimacy and consistency of your business identity. The companies that treat it as a one-shot data-entry exercise lose at this. The ones that treat it as a brand-coherence exercise win.</p>
+
+        <p>I'll go through the four moving parts (Brand, Campaign, Sample Messages, Opt-in), the reasons submissions fail, and a short runbook I use with volume agencies. By the time you're done reading you should be able to look at a rejected campaign and know within sixty seconds why it failed.</p>
+
+        <h2>The four moving parts</h2>
+
+        <h3>1. The Brand</h3>
+        <p>The Brand is the business identity that owns the messages. Legal name, EIN, registered address, website, contact info. The vetting layer behind the scenes (TCR) checks these against public records. If your EIN doesn't tie cleanly to the legal name, or your address is a forwarding service, or your website doesn't exist or doesn't match the business, you'll get rated as low-trust or rejected outright.</p>
+
+        <p>The most common Brand-level failure I see: a client uses a "doing business as" name for their website and customer-facing brand, but registers A2P with the LLC name. The two don't line up in records. The Brand fails.</p>
+
+        <h3>2. The Campaign</h3>
+        <p>The Campaign is the use case. You declare what kind of messages you'll be sending (marketing, account notifications, two-factor auth, etc.), how many per day, who you're sending to, and how the recipients got into your list.</p>
+
+        <p>This is where most rejections actually happen. Why? Because people write the Campaign description as a summary of "what we sell," not as a description of "what messages get sent and how recipients ended up receiving them." The reviewer wants to see a clean, end-to-end story: someone opts in <em>here</em>, that's the explicit consent, then they get <em>these</em> messages with <em>this</em> kind of content, and they can opt out by replying STOP.</p>
+
+        <h3>3. Sample Messages</h3>
+        <p>You provide sample messages that match the Campaign use case. If you registered a Campaign as "appointment reminders" but your sample message says <code>"Hey John, our Black Friday sale starts tomorrow!"</code>, the campaign gets rejected. Match samples to use case, full stop.</p>
+
+        <p>Include the brand name in every sample. Include opt-out language. If you have an "info" link, include it. Don't truncate. Don't write samples in a tone that sounds like a marketing pitch unless the Campaign is registered as marketing.</p>
+
+        <h3>4. Opt-in evidence</h3>
+        <p>Opt-in is the part everyone underestimates. You need to describe (and ideally show) <em>how</em> consumers consent to receive your messages. A web form? Where is it? A keyword? What's the keyword? A point-of-sale signup? Describe it.</p>
+
+        <p>Vague opt-in descriptions are the single most common reason for "we need more info" responses from the carriers. "Customers opt in through our website" is not an answer. <strong>"Customers fill out a contact form at example.com/contact with an explicit, unchecked-by-default checkbox reading 'I agree to receive SMS messages from BRAND about my appointments. Msg & data rates may apply. Reply STOP to cancel.'"</strong> — that's an answer.</p>
+
+        <h2>Why most submissions fail</h2>
+
+        <p>I keep a mental tally of why A2P submissions get rejected. Sorted by frequency:</p>
+
+        <ol>
+          <li><strong>Brand-Campaign mismatch.</strong> The Brand says one thing about the business, the Campaign use case says another, the website backs up neither cleanly.</li>
+          <li><strong>Vague opt-in language.</strong> "Customers consent via our website" — not enough.</li>
+          <li><strong>Sample messages that don't match the registered use case.</strong> Marketing samples in an account-notifications campaign.</li>
+          <li><strong>Missing opt-out language</strong> in the sample messages.</li>
+          <li><strong>Public-records mismatch</strong> on Brand (wrong EIN, address, or legal name).</li>
+          <li><strong>Throughput requests that don't match the use case.</strong> Asking for 200 MPS on a low-volume notification campaign.</li>
+        </ol>
+
+        <p>That's basically the list. Almost every rejection I've ever seen falls into one of those buckets.</p>
+
+        <h2>The runbook</h2>
+
+        <p>For volume agencies (clients running A2P for dozens or hundreds of sub-accounts), I built a standardized process. The numbers were ugly when we started — somewhere around 20% approval rate, with the rest stuck in a loop of rejections and resubmissions. After standardizing the runbook, the same teams now sit in the 95–100% range.</p>
+
+        <p>The whole thing isn't a secret, just discipline. The core moves:</p>
+
+        <ol>
+          <li><strong>Brand pre-flight.</strong> Before submitting <em>anything</em>, verify the business's legal name, EIN, and address against public records. If any of those don't line up, fix them first. Don't submit.</li>
+          <li><strong>One Campaign template per use case.</strong> Don't write the Campaign from scratch each time. Maintain a library of approved Campaign descriptions and sample-message sets for each common use case (marketing, appointment reminders, lead follow-up, etc.). Reuse and adapt.</li>
+          <li><strong>Opt-in script for the client.</strong> Most clients don't think about opt-in at all. I send them a one-page doc — a checklist of where their opt-in lives, the exact consent language to use, and how to describe it on the form. We update the live form if it's missing anything before submission.</li>
+          <li><strong>Email-parser tracking.</strong> A2P status emails are noisy. I built an email-parsing workflow that pipes inbound status updates into a Google Sheet so we can see, at a glance, which submissions are pending vs. approved vs. rejected and why. (Highly recommended once you're past a handful of campaigns.)</li>
+          <li><strong>Reject-pattern library.</strong> Every rejection we get goes into a shared doc with the rejection reason and what we changed to get the resubmission approved. After a few months, the library starts catching almost everything before submission.</li>
+        </ol>
+
+        <div class="callout">
+          <div class="callout-label">// the bit nobody likes to admit</div>
+          <p style="margin:0">A2P is bureaucracy. It rewards rigor. The teams that succeed at it treat it like a process, not like an obstacle. The teams that fail at it keep trying to "submit and hope."</p>
+        </div>
+
+        <h2>Operating around the system</h2>
+
+        <p>Two things to remember once you're approved:</p>
+
+        <p><strong>Brand and Campaign are not set-and-forget.</strong> If your business name or website changes — even slightly — your Brand can drift out of compliance. If your sample messages start drifting from the use case you registered, your filtering rates will quietly creep up. Set a reminder to audit your registered details once a quarter against what you're actually sending.</p>
+
+        <p><strong>Carrier filtering doesn't always show up as a hard reject.</strong> You can be "approved" and still have a significant percentage of messages filtered if your sender reputation drops or if your message content trips a filter. Treat deliverability as an ongoing metric, not as a one-time gate you cleared.</p>
+
+        <h2>If you remember one thing</h2>
+
+        <p>If you do nothing else: <strong>treat A2P as a brand-coherence exercise, not as a form.</strong> The legal name, the EIN, the address, the website, the Campaign use case, the sample messages, the opt-in story — they all have to tell the same story about the same business. When they do, you get approved. When they don't, you don't. It's that simple, and it's that hard.</p>
+
+        <hr class="post-divider" />
+
+        <p style="color:var(--muted); font-size:15px;"><em>If you're stuck on a specific A2P rejection, or you're running A2P at volume and want a sanity check on your process, <a href="../index.html#contact">drop me a line</a>. Always happy to look at a rejection email and tell you what the reviewer probably saw.</em></p>
+
+        <div class="post-footer">
+          <a href="../index.html#notes">← All writing</a>
+          <a href="../index.html#contact">Get in touch</a>
+          <span class="signoff">vidyut.poddar // 2025</span>
+        </div>
+      </div>
+    </div>
+  </article>
+</body>
+</html>

@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Custom JS inside no-code platforms — Vidyut Poddar</title>
+  <meta name="description" content="No-code platforms have a ceiling. The job of a good account specialist is to live productively above that ceiling. Patterns and examples from doing custom JS inside GoHighLevel." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="blog.css" />
+</head>
+<body>
+
+  <nav class="post-nav">
+    <div class="container">
+      <a class="back" href="../index.html">← vidyut.poddar</a>
+      <div class="meta">Dec 2025 · 6 min read</div>
+    </div>
+  </nav>
+
+  <article>
+    <div class="container">
+      <div class="post-tag">GHL · Custom Code</div>
+      <h1 class="post-title">Custom JS inside no-code platforms.</h1>
+      <p class="post-deck">"No-code" is a marketing term. Every meaningfully powerful no-code platform has a custom-code escape hatch — usually JavaScript and CSS. Learning to use it well is the highest-leverage skill an account specialist can develop. Patterns and examples from the work.</p>
+
+      <div class="post-byline">
+        <span class="author">Vidyut Poddar</span>
+        <span class="dot">·</span>
+        <span>Account Specialist @ HighLevel</span>
+      </div>
+
+      <div class="post-body">
+
+        <p>Sooner or later, a client asks for something the platform can't quite do.</p>
+
+        <p>It's almost never the headline feature. It's almost always the small thing — the calculation that has to happen as a customer fills out a form, the rule that has to trigger when a specific kind of contact lands in the pipeline, the styling tweak that would make the embedded widget actually fit on their site. The kind of request that, on a traditional CRM, you'd file with engineering and get back to in six months.</p>
+
+        <p>On a no-code platform, you have a different option. You can write a snippet.</p>
+
+        <p>This piece is about that option — when to take it, what kinds of patterns hold up over time, and why I think learning it is the most underrated skill an account specialist can pick up.</p>
+
+        <h2>The escape hatch is the point</h2>
+
+        <p>"No-code" is, strictly speaking, a lie. Every meaningfully powerful platform on the market has a custom-code surface. Webflow has scripts. Notion has formulas and APIs. HighLevel has the Custom Code action in workflows, plus custom JavaScript and CSS slots in the page builder. Airtable has automations with scripting. They all do.</p>
+
+        <p>The reason is simple. You can build a system that handles 80% of use cases with drag-and-drop tooling, but the long tail of customer requests will eat you if you don't give power users a way to extend the platform. The escape hatch is what keeps the platform viable for sophisticated customers.</p>
+
+        <p>The reason most CS folks don't take advantage of it: it feels like coding, and coding is the developer's job. But the surface area we're talking about here isn't full-stack engineering. It's:</p>
+        <ul>
+          <li>15–30 lines of JavaScript inside a workflow action</li>
+          <li>A small CSS block to override a stubborn layout</li>
+          <li>A custom HTML widget that talks to the platform's API</li>
+        </ul>
+        <p>None of which require formal engineering training. All of which compound your value to your customers dramatically.</p>
+
+        <h2>Three patterns I reach for constantly</h2>
+
+        <h3>Pattern 1: the workflow data-shaper</h3>
+
+        <p>The most common Custom Code use case isn't doing something complex — it's reshaping data between steps. The webhook came in with one payload format and the next step expects a different one. Custom Code, six lines, done.</p>
+
+        <pre><code>// Inside a Custom Code workflow action
+const fullName = inputData.first_name + " " + inputData.last_name;
+const tags = inputData.tags
+  .split(",")
+  .map(t => t.trim().toLowerCase())
+  .filter(Boolean);
+
+return {
+  full_name: fullName,
+  tag_list: tags,
+  is_priority: tags.includes("priority")
+};</code></pre>
+
+        <p>That's the shape of most workflow JS. It takes some <code>inputData</code>, does small things to it, and returns a clean output. You can chain a half-dozen of these to turn a messy inbound webhook into a clean, normalized contact ready to be acted on.</p>
+
+        <h3>Pattern 2: the conditional-styling override</h3>
+
+        <p>The page builder lays the page out the way the page builder wants to lay it out. Sometimes the page builder is wrong about something — a specific spacing issue, a control that should be visually grouped with another one, a button that should hide on mobile but show on desktop. CSS solves this.</p>
+
+        <pre><code>/* Hide the auxiliary CTA on small screens */
+@media (max-width: 640px) {
+  .secondary-cta { display: none !important; }
+}
+
+/* Tighten up the form's vertical rhythm */
+.hl-form .form-field { margin-bottom: 8px; }</code></pre>
+
+        <p>Two rules, total. Took thirty seconds. The page now looks the way the client wanted it to look. If you'd waited for engineering to add the corresponding setting to the page builder, you'd still be waiting.</p>
+
+        <p>The trick with custom CSS on a hosted platform: write selectors that are specific enough to actually apply, generic enough that minor platform updates don't break them, and well-commented enough that the next person to look at the page understands what you did.</p>
+
+        <h3>Pattern 3: the custom widget</h3>
+
+        <p>This is the highest-leverage pattern. The platform doesn't have a feature the client needs. You build that feature as a small HTML/JS widget and drop it into a custom-HTML block on the page.</p>
+
+        <p>Example: a client wanted a real-time view of form-submission analytics in their dashboard — something Google Forms gave them for free, but HighLevel didn't natively offer. I wrote a small script that fetched submission data from the platform's API, aggregated it, and rendered a clean stats panel. About 80 lines of JavaScript, plus some CSS. The client got the feature. No engineering ticket required.</p>
+
+        <p>The general shape:</p>
+
+        <pre><code>// Custom widget — form-submission stats
+(async function () {
+  const container = document.getElementById("form-stats");
+  if (!container) return;
+
+  const data = await fetch("/api/forms/abc123/submissions", {
+    headers: { Authorization: "Bearer " + TOKEN }
+  }).then(r => r.json());
+
+  const total = data.length;
+  const today = data.filter(s => isToday(s.created_at)).length;
+
+  container.innerHTML = `
+    <div class="stat">
+      <div class="stat-num">${total}</div>
+      <div class="stat-label">total submissions</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">${today}</div>
+      <div class="stat-label">today</div>
+    </div>
+  `;
+})();</code></pre>
+
+        <p>That's all it takes. The actual code in production is more defensive — error handling, loading states, pagination — but the bones are exactly this small. You don't need to be a frontend engineer. You need to be willing to read a tutorial.</p>
+
+        <h2>The principles, distilled</h2>
+
+        <p>A few rules that have served me well:</p>
+
+        <ol>
+          <li><strong>Always solve it without code first.</strong> If the platform can do it natively, even clunkily, use the native path. Custom code is a last resort, not a first instinct. Native paths get maintained by the vendor; your code gets maintained by you.</li>
+          <li><strong>Keep snippets small.</strong> A 30-line snippet is easy to read in six months. A 300-line snippet is a maintenance liability. If something gets long, you've usually outgrown the platform for that use case and should consider a real backend.</li>
+          <li><strong>Comment for the next person.</strong> Including future you. Explain what the snippet does and <em>why</em>. The "what" you can read from the code; the "why" you can't, and it's the thing that matters most when the snippet eventually breaks.</li>
+          <li><strong>Don't hard-code secrets.</strong> If your snippet needs an API key, it needs to come from a workflow variable, environment slot, or platform secret store. Never paste secrets into a Custom Code block. Period.</li>
+          <li><strong>Test in a sandbox account.</strong> Most no-code platforms let you clone a sub-account or staging environment. Use it. Mistakes in custom code break production fast.</li>
+          <li><strong>Write a "how to update this" comment</strong> at the top of any non-trivial snippet. Three lines, max. Just enough that the next person can hot-swap a value without breaking the logic.</li>
+        </ol>
+
+        <h2>Why this skill multiplies your value</h2>
+
+        <p>The account specialist who can write a workflow snippet is a different employee than the one who can't.</p>
+
+        <p>The one who can't has to escalate the request, wait for engineering capacity, manage the customer through a delay. The one who can ships in an afternoon. Multiply that across a year and the cumulative impact on retention, customer satisfaction, and (frankly) your own career trajectory is dramatic.</p>
+
+        <p>And the bar is lower than it looks. We're talking about a level of JavaScript and CSS that any motivated person can pick up in a month of evenings. Not full software engineering. Just enough to be dangerous inside the platform you live on.</p>
+
+        <div class="callout">
+          <div class="callout-label">// where to start</div>
+          <p style="margin:0">Pick the platform you use most. Find its custom-code surface (it has one). Spend a Saturday writing the smallest useful snippet you can think of for a real client problem. Ship it. Repeat next week.</p>
+        </div>
+
+        <h2>One last thing</h2>
+
+        <p>A small reminder, because I've seen this go sideways: the goal is to make your customer's life easier, not to flex on engineering. The patterns above are about closing gaps that exist between what the platform does and what a specific customer needs. They're not about building a parallel platform inside the platform. If you find yourself maintaining hundreds of lines of custom code per account, you've crossed a line. Pull back and have a different conversation with that customer about whether the platform is actually right for them.</p>
+
+        <p>Used well, the escape hatch is one of the most powerful tools in a modern CS/AS toolkit. Use it.</p>
+
+        <hr class="post-divider" />
+
+        <p style="color:var(--muted); font-size:15px;"><em>If you want to talk about a specific custom-code pattern, or you're stuck on a snippet, <a href="../index.html#contact">drop me a line</a>.</em></p>
+
+        <div class="post-footer">
+          <a href="../index.html#notes">← All writing</a>
+          <a href="../index.html#contact">Get in touch</a>
+          <span class="signoff">vidyut.poddar // 2025</span>
+        </div>
+      </div>
+    </div>
+  </article>
+</body>
+</html>
