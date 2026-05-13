@@ -1,0 +1,1640 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Vidyut Poddar — Account Specialist & Solutions Engineer</title>
+  <meta name="description" content="Customer Success and Technical Account leader at HighLevel. I bridge support, product, and the customer — turning fragile accounts into long-term partners and stalled tickets into shipped solutions." />
+  <meta property="og:title" content="Vidyut Poddar — Account Specialist & Solutions Engineer" />
+  <meta property="og:description" content="Customer Success and Technical Account leader at HighLevel. 100% retention, 0 escalations, and a habit of building the workflow nobody else will." />
+  <meta property="og:type" content="website" />
+  <meta name="theme-color" content="#0B0F1A" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='12' fill='%230B0F1A'/><text x='50%25' y='58%25' font-family='monospace' font-size='34' font-weight='700' text-anchor='middle' fill='%23FF8A4C'>vp</text></svg>" />
+
+  <style>
+    /* ============================================================
+       Theme tokens
+       ============================================================ */
+    :root {
+      --bg: #0B0F1A;
+      --bg-soft: #11172A;
+      --surface: #161E36;
+      --surface-2: #1D2745;
+      --border: #1F2A4A;
+      --border-soft: #18213C;
+      --text: #E6E8EE;
+      --muted: #8B93A7;
+      --dim: #5D6480;
+
+      --amber: #FF8A4C;          /* primary accent */
+      --amber-glow: #FF8A4C33;
+      --cyan: #06B6D4;           /* secondary accent — technical */
+      --green: #4ADE80;          /* "ok" status */
+      --magenta: #C084FC;        /* highlights */
+      --red: #F87171;
+
+      --radius: 14px;
+      --radius-sm: 8px;
+      --shadow-lg: 0 30px 80px -30px rgba(0,0,0,0.5);
+      --shadow-card: 0 1px 0 rgba(255,255,255,0.04) inset, 0 20px 60px -30px rgba(0,0,0,0.6);
+
+      --max: 1140px;
+      --gutter: 28px;
+      --mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+      --sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    [data-theme="light"] {
+      --bg: #FAFAF7;
+      --bg-soft: #F2F0E9;
+      --surface: #FFFFFF;
+      --surface-2: #F5F3EC;
+      --border: #E5E2D6;
+      --border-soft: #ECEAE0;
+      --text: #1A1E2E;
+      --muted: #5D6480;
+      --dim: #8B93A7;
+      --shadow-card: 0 1px 0 rgba(0,0,0,0.02) inset, 0 18px 40px -30px rgba(31,42,74,0.25);
+    }
+
+    /* ============================================================
+       Base
+       ============================================================ */
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--sans);
+      font-size: 16px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    /* subtle CRT-style gradient backdrop */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background:
+        radial-gradient(circle at 20% 0%, rgba(255,138,76,0.08), transparent 50%),
+        radial-gradient(circle at 80% 100%, rgba(6,182,212,0.06), transparent 50%);
+      z-index: 0;
+    }
+    [data-theme="light"] body::before { display: none; }
+
+    a {
+      color: var(--amber);
+      text-decoration: none;
+      transition: color .15s ease;
+    }
+    a:hover { color: var(--cyan); }
+
+    code, kbd, .mono { font-family: var(--mono); font-size: 0.92em; }
+
+    h1, h2, h3, h4 {
+      font-family: var(--sans);
+      font-weight: 700;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+      margin: 0;
+    }
+
+    .container {
+      width: 100%;
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 var(--gutter);
+      position: relative;
+      z-index: 1;
+    }
+
+    .section {
+      padding: 96px 0;
+    }
+    .section + .section { border-top: 1px solid var(--border-soft); }
+
+    .section-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-family: var(--mono);
+      font-size: 13px;
+      color: var(--amber);
+      margin-bottom: 18px;
+      text-transform: lowercase;
+    }
+    .section-label::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      background: var(--amber);
+      border-radius: 50%;
+      box-shadow: 0 0 14px var(--amber);
+    }
+
+    .section-title {
+      font-size: clamp(28px, 4vw, 40px);
+      margin-bottom: 14px;
+    }
+    .section-lede {
+      color: var(--muted);
+      font-size: 17px;
+      max-width: 720px;
+      margin-bottom: 48px;
+    }
+
+    /* ============================================================
+       Nav
+       ============================================================ */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(12px) saturate(140%);
+      -webkit-backdrop-filter: blur(12px) saturate(140%);
+      background: color-mix(in srgb, var(--bg) 75%, transparent);
+      border-bottom: 1px solid var(--border-soft);
+    }
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+    }
+    .logo {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-family: var(--mono);
+      font-weight: 600;
+      color: var(--text);
+    }
+    .logo-mark {
+      width: 28px;
+      height: 28px;
+      border-radius: 8px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, var(--amber), #E0561F);
+      color: #0B0F1A;
+      font-weight: 800;
+      font-size: 13px;
+      box-shadow: 0 0 18px var(--amber-glow);
+      cursor: pointer;
+      user-select: none;
+    }
+    .logo:hover { color: var(--amber); }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      font-family: var(--mono);
+      font-size: 13.5px;
+    }
+    .nav-links a {
+      color: var(--muted);
+      padding: 8px 14px;
+      border-radius: 8px;
+      transition: all .15s ease;
+    }
+    .nav-links a:hover { color: var(--text); background: var(--surface); }
+    .nav-links a.active { color: var(--amber); }
+    .nav-links a::before { content: "~/"; opacity: .35; }
+
+    .theme-toggle {
+      width: 36px;
+      height: 36px;
+      display: grid;
+      place-items: center;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      color: var(--muted);
+      border-radius: 8px;
+      cursor: pointer;
+      margin-left: 8px;
+      transition: all .15s ease;
+    }
+    .theme-toggle:hover { color: var(--amber); border-color: var(--amber); }
+
+    .mobile-toggle { display: none; }
+
+    @media (max-width: 760px) {
+      .nav-links { display: none; }
+      .nav-links.open {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        position: absolute;
+        top: 64px;
+        left: 0;
+        right: 0;
+        background: var(--bg);
+        border-bottom: 1px solid var(--border);
+        padding: 12px;
+        gap: 4px;
+      }
+      .mobile-toggle {
+        display: grid;
+        place-items: center;
+        width: 36px;
+        height: 36px;
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        color: var(--text);
+        cursor: pointer;
+      }
+    }
+
+    /* ============================================================
+       Hero
+       ============================================================ */
+    #home {
+      padding-top: 80px;
+      padding-bottom: 80px;
+      position: relative;
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 56px;
+      align-items: center;
+    }
+    @media (max-width: 900px) { .hero-grid { grid-template-columns: 1fr; gap: 40px; } }
+
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-family: var(--mono);
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 24px;
+      padding: 6px 12px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+    }
+    .pulse {
+      width: 8px; height: 8px;
+      background: var(--green); border-radius: 50%;
+      box-shadow: 0 0 10px var(--green);
+      animation: pulse 2.4s infinite ease-in-out;
+    }
+    @keyframes pulse {
+      0%,100% { opacity: 1; }
+      50% { opacity: .4; }
+    }
+
+    h1.hero-name {
+      font-size: clamp(44px, 7vw, 76px);
+      font-weight: 800;
+      letter-spacing: -0.035em;
+      line-height: 1.02;
+      margin-bottom: 22px;
+    }
+    .hero-name .accent {
+      background: linear-gradient(135deg, var(--amber), var(--magenta));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero-role {
+      font-family: var(--mono);
+      color: var(--cyan);
+      font-size: 16px;
+      margin-bottom: 22px;
+    }
+    .hero-role .caret {
+      display: inline-block;
+      width: 8px;
+      height: 16px;
+      background: var(--cyan);
+      vertical-align: -2px;
+      margin-left: 2px;
+      animation: blink 1.05s infinite step-start;
+    }
+    @keyframes blink {
+      50% { background: transparent; }
+    }
+
+    .hero-pitch {
+      font-size: 20px;
+      color: var(--muted);
+      margin-bottom: 36px;
+      max-width: 560px;
+      line-height: 1.55;
+    }
+    .hero-pitch strong { color: var(--text); font-weight: 600; }
+
+    .hero-cta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 20px;
+      border-radius: 10px;
+      font-family: var(--mono);
+      font-size: 14px;
+      cursor: pointer;
+      border: 1px solid transparent;
+      transition: transform .12s ease, background .15s ease, border .15s ease, color .15s ease;
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--amber), #E0561F);
+      color: #0B0F1A;
+      font-weight: 600;
+      box-shadow: 0 0 0 0 var(--amber-glow);
+    }
+    .btn-primary:hover { transform: translateY(-1px); box-shadow: 0 14px 30px -10px var(--amber-glow); color: #0B0F1A; }
+
+    .btn-ghost {
+      background: var(--surface);
+      border-color: var(--border);
+      color: var(--text);
+    }
+    .btn-ghost:hover { border-color: var(--cyan); color: var(--cyan); }
+
+    /* Terminal card */
+    .terminal {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-card);
+      overflow: hidden;
+      font-family: var(--mono);
+      font-size: 13.5px;
+      position: relative;
+    }
+    .term-header {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 16px;
+      background: var(--surface-2);
+      border-bottom: 1px solid var(--border-soft);
+    }
+    .term-dot { width: 10px; height: 10px; border-radius: 50%; }
+    .term-dot.r { background: #E16A6A; }
+    .term-dot.y { background: #E1B86A; }
+    .term-dot.g { background: #6AE19A; }
+    .term-title {
+      margin-left: auto;
+      color: var(--muted);
+      font-size: 12px;
+    }
+    .term-body {
+      padding: 20px;
+      min-height: 280px;
+      color: var(--text);
+      line-height: 1.85;
+    }
+    .term-body .prompt { color: var(--amber); }
+    .term-body .flag { color: var(--cyan); }
+    .term-body .value { color: var(--green); }
+    .term-body .comment { color: var(--dim); }
+    .term-body .mute { color: var(--muted); }
+
+    /* ============================================================
+       Stat strip
+       ============================================================ */
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 0;
+      margin-top: 64px;
+      border-top: 1px solid var(--border-soft);
+      border-bottom: 1px solid var(--border-soft);
+    }
+    @media (max-width: 900px) { .stats { grid-template-columns: repeat(2, 1fr); } }
+    .stat {
+      padding: 24px 16px;
+      border-right: 1px solid var(--border-soft);
+      text-align: left;
+    }
+    .stat:last-child { border-right: none; }
+    @media (max-width: 900px) {
+      .stat { border-right: none; border-bottom: 1px solid var(--border-soft); }
+      .stat:nth-child(odd) { border-right: 1px solid var(--border-soft); }
+    }
+    .stat-num {
+      font-family: var(--mono);
+      font-size: 30px;
+      font-weight: 700;
+      color: var(--amber);
+      letter-spacing: -0.02em;
+    }
+    .stat-label {
+      font-size: 12.5px;
+      color: var(--muted);
+      margin-top: 4px;
+      font-family: var(--mono);
+    }
+
+    /* ============================================================
+       About
+       ============================================================ */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 56px;
+      align-items: start;
+    }
+    @media (max-width: 900px) { .about-grid { grid-template-columns: 1fr; gap: 32px; } }
+
+    .portrait {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      border-radius: var(--radius);
+      overflow: hidden;
+      margin-bottom: 18px;
+      background: linear-gradient(135deg, var(--surface-2), var(--surface));
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-card);
+    }
+    .portrait img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      filter: saturate(1.05);
+    }
+    .portrait::after {
+      /* subtle accent glow */
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background: linear-gradient(180deg, transparent 60%, rgba(11,15,26,0.4));
+    }
+    .portrait .portrait-placeholder {
+      position: absolute;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      text-align: center;
+      padding: 24px;
+      color: var(--muted);
+      font-family: var(--mono);
+      font-size: 13px;
+      line-height: 1.6;
+    }
+    .portrait .portrait-placeholder code {
+      display: inline-block;
+      padding: 3px 8px;
+      background: var(--surface-2);
+      border-radius: 6px;
+      color: var(--amber);
+      margin-top: 6px;
+    }
+    .portrait-badge {
+      position: absolute;
+      bottom: 14px;
+      left: 14px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 12px;
+      font-family: var(--mono);
+      font-size: 11.5px;
+      color: var(--text);
+      background: rgba(11,15,26,0.7);
+      backdrop-filter: blur(8px);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      z-index: 1;
+    }
+    .portrait-badge .pulse { width: 6px; height: 6px; }
+
+    .about-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+      box-shadow: var(--shadow-card);
+      font-family: var(--mono);
+      font-size: 13.5px;
+    }
+    .kv { display: flex; gap: 8px; padding: 8px 0; border-bottom: 1px dashed var(--border-soft); }
+    .kv:last-child { border-bottom: none; }
+    .kv .k { color: var(--muted); min-width: 100px; }
+    .kv .v { color: var(--text); }
+
+    .about-prose p {
+      color: var(--muted);
+      font-size: 17px;
+      line-height: 1.75;
+      margin: 0 0 18px;
+    }
+    .about-prose p strong { color: var(--text); font-weight: 600; }
+    .about-prose p em { color: var(--cyan); font-style: normal; font-family: var(--mono); font-size: 0.92em; }
+
+    /* ============================================================
+       Experience timeline
+       ============================================================ */
+    .timeline {
+      position: relative;
+    }
+    .timeline::before {
+      content: "";
+      position: absolute;
+      top: 8px; bottom: 8px;
+      left: 11px;
+      width: 1px;
+      background: linear-gradient(to bottom, var(--amber), var(--cyan), transparent);
+    }
+
+    .role {
+      position: relative;
+      padding: 0 0 36px 44px;
+    }
+    .role::before {
+      content: "";
+      position: absolute;
+      left: 5px; top: 8px;
+      width: 14px; height: 14px;
+      border-radius: 50%;
+      background: var(--surface);
+      border: 2px solid var(--amber);
+      box-shadow: 0 0 10px var(--amber-glow);
+    }
+    .role.sub::before {
+      background: var(--cyan);
+      border-color: var(--cyan);
+      width: 10px; height: 10px;
+      left: 7px;
+    }
+
+    .role-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-bottom: 6px;
+    }
+    .role-title {
+      font-size: 19px;
+      font-weight: 700;
+      color: var(--text);
+    }
+    .role-meta {
+      font-family: var(--mono);
+      font-size: 12.5px;
+      color: var(--muted);
+    }
+    .role-company {
+      font-family: var(--mono);
+      font-size: 14px;
+      color: var(--amber);
+      margin-bottom: 12px;
+    }
+    .role-company .badge {
+      font-size: 10.5px;
+      padding: 2px 8px;
+      margin-left: 8px;
+      border-radius: 999px;
+      background: rgba(192, 132, 252, 0.12);
+      color: var(--magenta);
+      border: 1px solid rgba(192, 132, 252, 0.3);
+      vertical-align: 2px;
+    }
+    .role ul {
+      padding-left: 18px;
+      margin: 0;
+      color: var(--muted);
+      font-size: 15.5px;
+    }
+    .role ul li { margin: 6px 0; }
+    .role ul li strong { color: var(--text); font-weight: 600; }
+    .role ul li::marker { color: var(--cyan); }
+
+    /* ============================================================
+       Projects / Case studies
+       ============================================================ */
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+    @media (max-width: 760px) { .projects { grid-template-columns: 1fr; } }
+
+    .project {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+      box-shadow: var(--shadow-card);
+      transition: transform .18s ease, border-color .18s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    .project:hover { transform: translateY(-3px); border-color: var(--amber); }
+    .project::after {
+      content: "";
+      position: absolute;
+      inset: -1px;
+      border-radius: var(--radius);
+      pointer-events: none;
+      background: linear-gradient(180deg, transparent, var(--amber-glow));
+      opacity: 0;
+      transition: opacity .18s ease;
+    }
+    .project:hover::after { opacity: .25; }
+
+    .project-tag {
+      font-family: var(--mono);
+      font-size: 11.5px;
+      color: var(--cyan);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 12px;
+    }
+    .project h3 {
+      font-size: 19px;
+      margin-bottom: 10px;
+    }
+    .project p {
+      color: var(--muted);
+      font-size: 15px;
+      margin: 0 0 14px;
+      line-height: 1.6;
+    }
+    .project .metric {
+      display: inline-flex;
+      gap: 8px;
+      align-items: baseline;
+      font-family: var(--mono);
+      font-size: 13px;
+      color: var(--amber);
+      margin-top: 4px;
+    }
+    .project .metric .big {
+      font-size: 22px;
+      font-weight: 700;
+    }
+
+    .project-stack {
+      margin-top: 14px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+    .chip {
+      font-family: var(--mono);
+      font-size: 11.5px;
+      color: var(--muted);
+      padding: 3px 10px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+    }
+
+    .case-study {
+      grid-column: 1 / -1;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 30px;
+      box-shadow: var(--shadow-card);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+      align-items: center;
+    }
+    @media (max-width: 760px) { .case-study { grid-template-columns: 1fr; } }
+    .case-study .meta { font-family: var(--mono); color: var(--cyan); font-size: 12.5px; margin-bottom: 12px; text-transform: uppercase; letter-spacing: 0.08em;}
+    .case-study h3 { font-size: 24px; margin-bottom: 14px; }
+    .case-study p { color: var(--muted); font-size: 16px; line-height: 1.65; }
+    .case-bigstat {
+      font-family: var(--mono);
+      font-size: 64px;
+      font-weight: 700;
+      letter-spacing: -0.04em;
+      color: var(--amber);
+      line-height: 1;
+    }
+    .case-bigstat .small { font-size: 18px; color: var(--muted); display: block; margin-top: 8px; }
+
+    /* ============================================================
+       Testimonials
+       ============================================================ */
+    .testimonials {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+    @media (max-width: 760px) { .testimonials { grid-template-columns: 1fr; } }
+    .quote {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+      position: relative;
+      box-shadow: var(--shadow-card);
+    }
+    .quote::before {
+      content: "“";
+      position: absolute;
+      top: -6px; left: 16px;
+      font-family: Georgia, serif;
+      font-size: 64px;
+      color: var(--amber);
+      line-height: 1;
+    }
+    .quote p {
+      color: var(--text);
+      font-size: 16px;
+      line-height: 1.65;
+      margin: 0 0 16px;
+      padding-top: 12px;
+    }
+    .quote .src {
+      font-family: var(--mono);
+      font-size: 12.5px;
+      color: var(--muted);
+    }
+    .quote .src .who { color: var(--cyan); }
+
+    .testimonial-note {
+      grid-column: 1 / -1;
+      font-family: var(--mono);
+      font-size: 12.5px;
+      color: var(--dim);
+      margin-top: 8px;
+    }
+
+    /* Video testimonial */
+    .video-testimonial {
+      max-width: 760px;
+      margin: 0 auto 36px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow-card);
+      position: relative;
+    }
+    .video-testimonial-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 14px 18px;
+      background: var(--surface-2);
+      border-bottom: 1px solid var(--border-soft);
+      font-family: var(--mono);
+      font-size: 12.5px;
+      color: var(--muted);
+    }
+    .video-testimonial-head .left { display: inline-flex; gap: 10px; align-items: center; color: var(--cyan); }
+    .video-testimonial-head .rec { width: 8px; height: 8px; border-radius: 50%; background: #E16A6A; box-shadow: 0 0 10px #E16A6A; animation: pulse 2.4s infinite ease-in-out; }
+    .video-frame {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      background: #000;
+    }
+    .video-frame iframe {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      border: 0;
+    }
+    .video-testimonial-foot {
+      padding: 12px 18px 14px;
+      font-family: var(--mono);
+      font-size: 12.5px;
+      color: var(--muted);
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .video-testimonial-foot .name { color: var(--text); }
+
+    /* ============================================================
+       Notes / Blog placeholder
+       ============================================================ */
+    .notes-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+    @media (max-width: 760px) { .notes-grid { grid-template-columns: 1fr; } }
+    .note {
+      display: block;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 22px;
+      transition: transform .15s ease, border-color .15s ease;
+      color: inherit;
+      position: relative;
+    }
+    .note:hover { border-color: var(--amber); transform: translateY(-2px); color: inherit; }
+    .note h4 { font-size: 17px; margin-bottom: 8px; color: var(--text); }
+    .note:hover h4 { color: var(--amber); }
+    .note p { color: var(--muted); font-size: 14.5px; margin: 0 0 12px; }
+    .note .status { font-family: var(--mono); font-size: 11px; color: var(--amber); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 10px; }
+    .note .read-on { font-family: var(--mono); font-size: 12px; color: var(--muted); display: inline-flex; align-items: center; gap: 6px; }
+    .note:hover .read-on { color: var(--amber); }
+
+    /* ============================================================
+       Contact
+       ============================================================ */
+    .contact-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 40px;
+      box-shadow: var(--shadow-card);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: center;
+    }
+    @media (max-width: 760px) { .contact-card { grid-template-columns: 1fr; } }
+    .contact-card h2 { font-size: 30px; margin-bottom: 10px; }
+    .contact-card p { color: var(--muted); margin: 0 0 24px; font-size: 16px; }
+    .contact-links { display: flex; flex-direction: column; gap: 10px; }
+    .contact-link {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 14px 18px;
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      font-family: var(--mono);
+      font-size: 14px;
+      color: var(--text);
+      transition: all .15s ease;
+    }
+    .contact-link:hover { border-color: var(--amber); color: var(--amber); }
+    .contact-link .label { color: var(--muted); font-size: 12px; }
+
+    /* ============================================================
+       Footer
+       ============================================================ */
+    footer {
+      padding: 40px 0;
+      border-top: 1px solid var(--border-soft);
+      color: var(--dim);
+      font-family: var(--mono);
+      font-size: 12.5px;
+    }
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .footer-inner a { color: var(--muted); }
+    .footer-inner a:hover { color: var(--amber); }
+
+    /* Reveal animation */
+    .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity .6s ease, transform .6s ease;
+    }
+    .reveal.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Selection */
+    ::selection { background: var(--amber); color: #0B0F1A; }
+  </style>
+</head>
+<body>
+
+  <!-- ============================================================
+       NAV
+       ============================================================ -->
+  <nav>
+    <div class="container nav-inner">
+      <a href="#home" class="logo">
+        <span class="logo-mark" id="logoMark" title="psst — try clicking me a few times">vp</span>
+        <span>vidyut<span style="color:var(--dim)">.poddar</span></span>
+      </a>
+      <div class="nav-links" id="navLinks">
+        <a href="#home">home</a>
+        <a href="#about">about</a>
+        <a href="#experience">experience</a>
+        <a href="#work">work</a>
+        <a href="#testimonials">field-notes</a>
+        <a href="#notes">writing</a>
+        <a href="#contact">contact</a>
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme" title="Toggle theme">
+          <svg id="iconMoon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </button>
+      </div>
+      <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle menu">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ============================================================
+       HERO
+       ============================================================ -->
+  <section id="home">
+    <div class="container">
+      <div class="hero-grid">
+        <div>
+          <div class="hero-eyebrow">
+            <span class="pulse"></span>
+            <span>Available for interesting problems</span>
+          </div>
+          <h1 class="hero-name">Vidyut Poddar<span style="color:var(--amber)">.</span></h1>
+          <div class="hero-role">
+            <span style="color:var(--dim)">$</span> whoami<br>
+            <span id="typed"></span><span class="caret"></span>
+          </div>
+          <p class="hero-pitch">
+            I help customers win in SaaS, Fintech, and product-led environments — <strong>bridging support, product, and engineering</strong> so the things that should ship, ship. Currently Account Specialist @ <a href="https://www.gohighlevel.com" target="_blank" rel="noopener">HighLevel</a>, building the workflows other teams won't.
+          </p>
+          <div class="hero-cta">
+            <a class="btn btn-primary" href="Vidyut_Poddar_Resume.pdf" target="_blank" rel="noopener">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+              Resume
+            </a>
+            <a class="btn btn-ghost" href="https://www.linkedin.com/in/vidyut-poddar-6b5332109/" target="_blank" rel="noopener">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+              LinkedIn
+            </a>
+            <a class="btn btn-ghost" href="mailto:vidyutpoddar@gmail.com">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              Email
+            </a>
+          </div>
+        </div>
+
+        <div class="terminal" aria-hidden="true">
+          <div class="term-header">
+            <span class="term-dot r"></span>
+            <span class="term-dot y"></span>
+            <span class="term-dot g"></span>
+            <span class="term-title">vidyut@chennai — zsh</span>
+          </div>
+          <div class="term-body">
+            <div><span class="prompt">$</span> cat vidyut.profile</div>
+            <div><span class="flag">name</span>:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="value">"Vidyut Poddar"</span></div>
+            <div><span class="flag">role</span>:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="value">"Account Specialist"</span></div>
+            <div><span class="flag">company</span>:&nbsp;&nbsp;&nbsp;<span class="value">"HighLevel"</span></div>
+            <div><span class="flag">location</span>:&nbsp;&nbsp;<span class="value">"Chennai, IN"</span> <span class="comment"># <span id="localtime"></span></span></div>
+            <div><span class="flag">retention</span>:&nbsp;<span class="value">100%</span></div>
+            <div><span class="flag">escalations</span>: <span class="value">0</span></div>
+            <div><span class="flag">churn</span>:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="value">0</span></div>
+            <div><span class="flag">stack</span>:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="value">["JS", "CSS", "REST", "A2P", "Twilio", "SIP", "Voice AI"]</span></div>
+            <div><span class="flag">status</span>:&nbsp;&nbsp;&nbsp;&nbsp;<span class="value">"shipping"</span></div>
+            <div style="margin-top:10px"><span class="prompt">$</span> <span class="mute">_</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Stat strip -->
+      <div class="stats reveal">
+        <div class="stat">
+          <div class="stat-num" data-count="100" data-suffix="%">0</div>
+          <div class="stat-label">portfolio retention</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num" data-count="574">0</div>
+          <div class="stat-label">tickets / Q1 2026</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num" data-count="700" data-suffix="+">0</div>
+          <div class="stat-label">sub-accounts restored</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num" data-count="60" data-suffix="%">0</div>
+          <div class="stat-label">ticket-volume reduction</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">0<span style="color:var(--cyan)">/0</span></div>
+          <div class="stat-label">escalations / churn</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       ABOUT
+       ============================================================ -->
+  <section id="about" class="section">
+    <div class="container">
+      <div class="section-label">about</div>
+      <h2 class="section-title">Hi, I'm Vidyut.</h2>
+      <p class="section-lede">
+        I started in customer support. Somewhere along the way I got tired of just <em>answering</em> the question, and started building the workflow that made the question stop coming back.
+      </p>
+
+      <div class="about-grid">
+        <div>
+          <div class="portrait">
+            <span class="portrait-badge"><span class="pulse"></span>Chennai, IN</span>
+            <img src="vidyut.jpg" alt="Vidyut Poddar"
+                 onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';" />
+            <div class="portrait-placeholder" style="display:none">
+              drop your photo into this folder as<br>
+              <code>vidyut.jpg</code><br>
+              <span style="color:var(--dim); margin-top:8px; display:block">(or update the &lt;img src&gt; in index.html)</span>
+            </div>
+          </div>
+          <div class="about-card">
+          <div class="kv"><span class="k">currently</span><span class="v">Account Specialist @ HighLevel</span></div>
+          <div class="kv"><span class="k">based in</span><span class="v">Chennai, India</span></div>
+          <div class="kv"><span class="k">remote</span><span class="v">yes — across time zones</span></div>
+          <div class="kv"><span class="k">years in CS</span><span class="v">6+</span></div>
+          <div class="kv"><span class="k">superpower</span><span class="v">complex, stalled tickets</span></div>
+          <div class="kv"><span class="k">writes</span><span class="v">JavaScript · CSS · workflows</span></div>
+          <div class="kv"><span class="k">speaks</span><span class="v">English · Hindi · Tamil</span></div>
+          <div class="kv"><span class="k">studied</span><span class="v">PGPM Marketing, Great Lakes</span></div>
+          <div class="kv"><span class="k">outside work</span><span class="v">tinkering, learning, breaking things</span></div>
+          </div>
+        </div>
+
+        <div class="about-prose">
+          <p>
+            My career started in B2B manufacturing (<strong>Satibox</strong>), moved into B2C Fintech support at <strong>Juno</strong> — where I learned what it really means to own metrics like FRT, AHT, and CSAT under volume — and arrived at <strong>HighLevel</strong> in October 2023, an all-in-one CRM and marketing platform serving agencies. What's happened since is, in some ways, the more interesting part.
+          </p>
+          <p>
+            <em>2024 — the catch-up year.</em>  I joined as a Customer Support Representative and spent the year doing something that doesn't show up on a resume: becoming a real user of the platform, not just a trained employee. I experimented, broke things, rebuilt them, joined the L1/L2 pilot, learned the affiliate side of the business, and started showing up in the Slack channels of clients I didn't technically own. None of that paid off in Q3. It paid off in Q1 of the next year.
+          </p>
+          <p>
+            <em>2025 — the shift.</em>  I noticed I was spending less time troubleshooting and more time engineering solutions. JavaScript dashboards for clients whose use cases the product didn't fit. An A2P email-parser pipeline so high-volume agencies could see submission status in real time. A custom Voice AI synthesis workflow because the standard voicemail flow wasn't cutting it. A LeadConnector Q&A bot. A standardized A2P submission process that took volume agencies from a ~20% approval rate to 95–100%. By the end of the year I was leading client-side response on the A2P disruption that hit in March, transitioning high-touch agencies onto a Slack-based Premium Support model, and getting tagged on accounts I wasn't formally assigned to.
+          </p>
+          <p>
+            <em>2026 — the table.</em>  Promoted to <strong>Account Specialist</strong>, owning a portfolio of high-value enterprise accounts. 100% retention, zero escalations, zero churn. A billing audit that saved one client $2,300 MRR. A 700+ sub-account restoration that retained an enterprise customer when engineering said the fix wasn't coming. Invitations to join client-internal steering committees. The kind of work where the line between "support," "success," and "solutions engineering" stopped meaning anything — which is, I think, the point.
+          </p>
+          <p>
+            Customers don't care which team you sit on. They care whether you can ship a fix. That's the job I've grown into, and that's the job I love.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       EXPERIENCE
+       ============================================================ -->
+  <section id="experience" class="section">
+    <div class="container">
+      <div class="section-label">experience</div>
+      <h2 class="section-title">Six years, three companies, one trajectory.</h2>
+      <p class="section-lede">
+        From troubleshooting to solutions engineering — a steady move toward owning the customer outcome end to end.
+      </p>
+
+      <div class="timeline">
+
+        <!-- HighLevel -->
+        <div class="role">
+          <div class="role-head">
+            <div class="role-title">Account Specialist</div>
+            <div class="role-meta">Oct 2024 — Present</div>
+          </div>
+          <div class="role-company">HighLevel · B2B SaaS / CRM <span class="badge">promotion</span></div>
+          <ul>
+            <li>Owning a portfolio of high-value enterprise accounts; invited to multiple client-internal steering committees.</li>
+            <li>Built custom workflows where the product fell short: A2P email parser, form-submission analytics dashboard (JS), Voice AI → contact-note pipeline, tiered Q&A bot for sub-accounts.</li>
+            <li>Standardized the A2P 10DLC submission process for volume agencies, lifting approval rates from ~20% to 95–100%.</li>
+            <li>Audited agency and sub-account billing to find leakage — including a single call-recording spike worth $2,300 MRR — and revamped client-side rebilling SOPs.</li>
+            <li>QA-reviewed dev escalations for clarity and external perception before they reached engineering, raising the support team's standing with Product.</li>
+            <li>Partnered with PMs to ship enhancements: T&C element on Forms & Surveys, revamped Restore endpoint for enterprise clients.</li>
+            <li>Delivered training (internal + client) on Custom CSS, JavaScript, A2P 10DLC, Twilio rebilling, IVR / Voice AI setup, SIP Trunking, deliverability, and AI knowledge-base creation.</li>
+          </ul>
+        </div>
+
+        <div class="role sub">
+          <div class="role-head">
+            <div class="role-title">Customer Support Representative</div>
+            <div class="role-meta">Oct 2023 — Sep 2024</div>
+          </div>
+          <div class="role-company">HighLevel</div>
+          <ul>
+            <li>Selected for the L1/L2 ticket pilot — proved Priority Support could own the full product surface.</li>
+            <li>Led de-escalations for at-risk PS clients; migrated several high-touch agencies onto a Slack-based Premium Support model.</li>
+            <li>Onboarded and trained new PS team members joining in late 2024.</li>
+            <li>Self-directed upskilling across CSS, JavaScript, Google Sheets, the Affiliate Program, and A2P — the foundation for the solutions-engineering posture that followed.</li>
+          </ul>
+        </div>
+
+        <!-- Juno -->
+        <div class="role">
+          <div class="role-head">
+            <div class="role-title">Customer Success Specialist</div>
+            <div class="role-meta">Jun 2022 — Oct 2023</div>
+          </div>
+          <div class="role-company">Juno (Nuofox Labs Pvt. Ltd.) · B2C Fintech</div>
+          <ul>
+            <li>Owned FRT, AHT, and CSAT for a high-volume Fintech app helping Indian customers bank with US institutions.</li>
+            <li>Analyzed caller trends and ticket patterns to drive proactive process and product fixes that cut repeat contact volume.</li>
+            <li>Root-cause analysis on complex complaints surfaced recurring issues into management and product decisions.</li>
+            <li>Helped draft and roll out new customer-service policies and SOPs.</li>
+          </ul>
+        </div>
+
+        <!-- Satibox -->
+        <div class="role">
+          <div class="role-head">
+            <div class="role-title">Senior Customer Success Executive</div>
+            <div class="role-meta">Nov 2019 — Jan 2022</div>
+          </div>
+          <div class="role-company">Satibox Manufacturing Pvt. Ltd. · B2B Manufacturing</div>
+          <ul>
+            <li>Built and ran product training programs and feedback loops for partners and customers.</li>
+            <li>Coordinated with vendors on structured video training, cutting time-to-competency for new SKUs.</li>
+            <li>Ran feedback campaigns that fed product, packaging, and process improvements.</li>
+            <li>Owned multi-segment customer relationships as a primary point of contact for partner accounts.</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       WORK / PROJECTS
+       ============================================================ -->
+  <section id="work" class="section">
+    <div class="container">
+      <div class="section-label">work</div>
+      <h2 class="section-title">What I've actually shipped.</h2>
+      <p class="section-lede">
+        A selection of customer wins, custom builds, and the kind of cross-functional work that doesn't always end up on a resume.
+      </p>
+
+      <div class="projects">
+
+        <!-- Featured case study: Mastermind -->
+        <div class="case-study">
+          <div>
+            <div class="meta">// case study · enterprise recovery</div>
+            <h3>The Mastermind restoration.</h3>
+            <p>
+              One of HighLevel's largest enterprise customers (a sales/coaching mastermind) accidentally deleted 700+ sub-accounts. No engineering fix was forthcoming. We had a week — fewer, if the customer's confidence cratered first.
+            </p>
+            <p style="margin-top:14px">
+              I collaborated with Alexis Counts and two engineering partners to <strong style="color:var(--text)">manually restore every single asset</strong>. The customer stayed. The relationship deepened. Not about pointing fingers — about solving the problem.
+            </p>
+          </div>
+          <div style="text-align:right">
+            <div class="case-bigstat">
+              700+
+              <span class="small">sub-accounts restored in 7 days</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Extendly — strengthened arc, not just one metric -->
+        <div class="project">
+          <div class="project-tag">// support strategy · partner arc</div>
+          <h3>Extendly — channel redesign & beyond</h3>
+          <p>Started as a support-channel redesign for one of HighLevel's largest agency partners — shifting their team off chats and tickets onto more scalable support avenues. It worked: monthly volume dropped from ~1,200 to ~500 inside a quarter. The relationship deepened from there into joint work on AI Knowledge Base adoption and Prompting workshops driving their own AI rollout.</p>
+          <div class="metric"><span class="big">1,200 → 500</span> <span>monthly tickets · Q4 '24 → Q1 '25</span></div>
+          <div class="project-stack">
+            <span class="chip">support strategy</span>
+            <span class="chip">channel design</span>
+            <span class="chip">AI adoption</span>
+            <span class="chip">enablement</span>
+          </div>
+        </div>
+
+        <!-- A2P Runbook — NEW -->
+        <div class="project">
+          <div class="project-tag">// process · messaging compliance</div>
+          <h3>A2P 10DLC submission, productized</h3>
+          <p>Built a standardized A2P 10DLC submission process and runbook for high-volume agencies. Documented the Brand-vetting, Campaign, and opt-in patterns that actually clear carrier review — and the failure modes that don't. Used by Tax Nitro, Extendly, Adminify, AttractROI, and Webdynamics.</p>
+          <div class="metric"><span class="big">~20% → 95–100%</span> <span>approval rate across volume agencies</span></div>
+          <div class="project-stack">
+            <span class="chip">A2P 10DLC</span>
+            <span class="chip">process design</span>
+            <span class="chip">enablement</span>
+          </div>
+        </div>
+
+        <!-- Billing Audit — NEW -->
+        <div class="project">
+          <div class="project-tag">// account audit · cost recovery</div>
+          <h3>The $2,300 MRR a client didn't know they were losing</h3>
+          <p>An agency-level audit of sub-account billing surfaced an unusual spike from excessive call-recording usage — saved the client $2,300 MRR after a single review. Same audit caught a batch of accounts not being rebilled due to an internal SOP gap; we revamped the SOP and moved the client off ActiveCampaign onto native Social Planner where appropriate.</p>
+          <div class="metric"><span class="big">$2,300</span> <span>MRR recovered · plus rebilling SOP overhaul</span></div>
+          <div class="project-stack">
+            <span class="chip">billing audit</span>
+            <span class="chip">SOP design</span>
+            <span class="chip">cost optimization</span>
+          </div>
+        </div>
+
+        <!-- A2P Email Parser -->
+        <div class="project">
+          <div class="project-tag">// custom build · workflow</div>
+          <h3>A2P 10DLC email-parser pipeline</h3>
+          <p>Designed an automated parser for inbound A2P status notification emails, syncing real-time state to Google Sheets so high-volume agencies (Tax Nitro, Adminify, AttractROI) can track their submissions without manual triage.</p>
+          <div class="project-stack">
+            <span class="chip">A2P 10DLC</span>
+            <span class="chip">email parsing</span>
+            <span class="chip">workflows</span>
+            <span class="chip">Google Sheets</span>
+          </div>
+        </div>
+
+        <!-- Form Analytics Dashboard -->
+        <div class="project">
+          <div class="project-tag">// custom build · javascript</div>
+          <h3>Form submission analytics</h3>
+          <p>Built a custom JavaScript analytics dashboard for form submissions — replicating Google Forms-style insights inside HighLevel without dedicated dev resources, so an agency could finally answer the questions their client kept asking.</p>
+          <div class="project-stack">
+            <span class="chip">JavaScript</span>
+            <span class="chip">CSS</span>
+            <span class="chip">custom code</span>
+            <span class="chip">analytics</span>
+          </div>
+        </div>
+
+        <!-- Voice AI pipeline -->
+        <div class="project">
+          <div class="project-tag">// custom build · voice ai</div>
+          <h3>Voice AI → contact-note pipeline</h3>
+          <p>The standard voicemail flow wasn't cutting it for a client. Engineered an alternative that synthesizes Voice AI snippets into contact notes — same outcome, better data, no waiting on roadmap.</p>
+          <div class="project-stack">
+            <span class="chip">Voice AI</span>
+            <span class="chip">workflow automation</span>
+            <span class="chip">CRM</span>
+          </div>
+        </div>
+
+        <!-- Q&A bot -->
+        <div class="project">
+          <div class="project-tag">// custom build · automation</div>
+          <h3>LeadConnector Q&amp;A bot</h3>
+          <p>Stood up a tiered Q&amp;A bot inside an agency's LeadConnector workspace — first-line automated answers for sub-account users, with clean escalation paths into the human team only when needed.</p>
+          <div class="project-stack">
+            <span class="chip">LeadConnector</span>
+            <span class="chip">automation</span>
+            <span class="chip">support tiering</span>
+          </div>
+        </div>
+
+        <!-- A2P Crisis -->
+        <div class="project">
+          <div class="project-tag">// crisis response</div>
+          <h3>A2P disruption — March 2025</h3>
+          <p>When a major A2P disruption hit messaging delivery for high-touch Priority Support clients, I led the client-side response — keeping AttractROI, Webdynamics, Razor Ridge, Dealership Accelerator, and others informed, unblocked, and from churning.</p>
+          <div class="project-stack">
+            <span class="chip">incident comms</span>
+            <span class="chip">retention</span>
+            <span class="chip">A2P 10DLC</span>
+          </div>
+        </div>
+
+        <!-- Enablement -->
+        <div class="project">
+          <div class="project-tag">// enablement</div>
+          <h3>Training, recorded</h3>
+          <p>A library of internal Loom training videos and live client sessions on advanced topics: Custom CSS, JavaScript & custom code, A2P, Twilio rebilling, IVR/Voice AI, SIP trunking, deliverability, AI knowledge-base setup.</p>
+          <div class="project-stack">
+            <span class="chip">internal training</span>
+            <span class="chip">client demos</span>
+            <span class="chip">documentation</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       FIELD NOTES / TESTIMONIALS
+       ============================================================ -->
+  <section id="testimonials" class="section">
+    <div class="container">
+      <div class="section-label">field-notes</div>
+      <h2 class="section-title">What the work feels like, from the other side.</h2>
+      <p class="section-lede">
+        A short video testimonial from a client — and a few paraphrased reflections gathered from years of relationships.
+      </p>
+
+      <!-- Video testimonial -->
+      <div class="video-testimonial reveal">
+        <div class="video-testimonial-head">
+          <span class="left"><span class="rec"></span> client video · testimonial</span>
+          <span>name withheld</span>
+        </div>
+        <div class="video-frame">
+          <iframe src="https://drive.google.com/file/d/10Ztd4t6EYQFuz1DB_Tfi3IlUDinKVMk4/preview"
+                  allow="autoplay; fullscreen"
+                  allowfullscreen
+                  loading="lazy"
+                  title="Client video testimonial"></iframe>
+        </div>
+        <div class="video-testimonial-foot">
+          <span>// shared with permission · client identity withheld out of respect</span>
+          <span class="name">vidyut.poddar</span>
+        </div>
+      </div>
+
+      <div class="testimonials">
+        <div class="quote">
+          <p>It used to feel like a vendor relationship. Now it feels like two friends meeting at a workplace.</p>
+          <div class="src">— <span class="who">A long-standing agency partner</span> · paraphrased</div>
+        </div>
+        <div class="quote">
+          <p>One size does not fit all. Vidyut figures out how each of our stakeholders actually wants to be supported, and meets them there.</p>
+          <div class="src">— <span class="who">Enterprise account contact</span> · paraphrased</div>
+        </div>
+        <div class="quote">
+          <p>If a ticket has stalled somewhere else, we ask Vidyut to take a look. It tends to move after that.</p>
+          <div class="src">— <span class="who">Internal team member</span> · paraphrased</div>
+        </div>
+        <div class="quote">
+          <p>He doesn't just troubleshoot. He builds the thing that makes the problem stop existing.</p>
+          <div class="src">— <span class="who">PS client</span> · paraphrased</div>
+        </div>
+        <div class="testimonial-note">
+          // these will be replaced with named, attributed quotes as they come in. if we've worked together and you'd be up for one, <a href="mailto:vidyutpoddar@gmail.com">drop me a line</a>.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       NOTES / BLOG
+       ============================================================ -->
+  <section id="notes" class="section">
+    <div class="container">
+      <div class="section-label">writing</div>
+      <h2 class="section-title">Notes on the craft.</h2>
+      <p class="section-lede">
+        Posts on AI, SaaS, GHL, and the work of customer success done well. Written by me, on my own time.
+      </p>
+
+      <div class="notes-grid">
+        <a class="note" href="posts/post-a2p.html">
+          <div class="status">GHL · Messaging</div>
+          <h4>A2P 10DLC, plainly explained.</h4>
+          <p>The compliance regime that decides whether your SMS gets delivered — and the runbook that took our volume agencies from ~20% to 95–100% approval.</p>
+          <span class="read-on">read post →</span>
+        </a>
+        <a class="note" href="posts/post-ai-kb.html">
+          <div class="status">AI · Support</div>
+          <h4>AI knowledge bases that don't lie to your customers.</h4>
+          <p>LLMs are great at sounding confident. They're not great at being right. The unsexy curation work that determines whether your AI agent ships.</p>
+          <span class="read-on">read post →</span>
+        </a>
+        <a class="note" href="posts/post-troubleshooter.html">
+          <div class="status">SaaS · Career</div>
+          <h4>From troubleshooter to solutions engineer.</h4>
+          <p>A field guide to making the jump from "answer the question" to "remove the question." Written for the support and CS folks who suspect there's more to this job.</p>
+          <span class="read-on">read post →</span>
+        </a>
+        <a class="note" href="posts/post-mastermind.html">
+          <div class="status">Story · Retention</div>
+          <h4>Restoring 700+ sub-accounts in a week.</h4>
+          <p>An enterprise customer deleted everything. Engineering said the fix wasn't coming. What we did, what it cost, and the unsexy lesson it taught me about retention.</p>
+          <span class="read-on">read post →</span>
+        </a>
+        <a class="note" href="posts/post-l1l2.html">
+          <div class="status">SaaS · Support</div>
+          <h4>The L1/L2 false dichotomy.</h4>
+          <p>Strict tier-based support is a habit borrowed from call centers. In modern SaaS, it costs more than it saves. A pragmatic case for the technical generalist.</p>
+          <span class="read-on">read post →</span>
+        </a>
+        <a class="note" href="posts/post-custom-js.html">
+          <div class="status">GHL · Custom Code</div>
+          <h4>Custom JS inside no-code platforms.</h4>
+          <p>No-code is a marketing term. The highest-leverage skill an account specialist can develop is using the JavaScript escape hatch every platform has.</p>
+          <span class="read-on">read post →</span>
+        </a>
+        <a class="note" href="posts/post-qbr.html">
+          <div class="status">SaaS · Customer Success</div>
+          <h4>The QBR that earns a seat at the table.</h4>
+          <p>Most quarterly business reviews are status updates dressed in a slide deck. The good ones are the meeting that turns you from a vendor into a peer.</p>
+          <span class="read-on">read post →</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       CONTACT
+       ============================================================ -->
+  <section id="contact" class="section">
+    <div class="container">
+      <div class="contact-card">
+        <div>
+          <div class="section-label">contact</div>
+          <h2>Let's talk.</h2>
+          <p>
+            Open to interesting customer success, technical account management, and solutions roles. Also happy to chat about HighLevel, A2P, or how to make complex customers love you.
+          </p>
+          <div style="font-family:var(--mono); color:var(--muted); font-size:13px;">
+            Response time: usually within 24 hours <span style="color:var(--green)">●</span>
+          </div>
+        </div>
+        <div class="contact-links">
+          <a class="contact-link" href="mailto:vidyutpoddar@gmail.com">
+            <span><span class="label">email //</span> vidyutpoddar@gmail.com</span>
+            <span style="color:var(--amber)">→</span>
+          </a>
+          <a class="contact-link" href="https://www.linkedin.com/in/vidyut-poddar-6b5332109/" target="_blank" rel="noopener">
+            <span><span class="label">linkedin //</span> /in/vidyut-poddar-6b5332109</span>
+            <span style="color:var(--amber)">→</span>
+          </a>
+          <a class="contact-link" href="tel:+917358771724">
+            <span><span class="label">phone //</span> +91 7358771724</span>
+            <span style="color:var(--amber)">→</span>
+          </a>
+          <a class="contact-link" href="Vidyut_Poddar_Resume.pdf" target="_blank" rel="noopener">
+            <span><span class="label">resume //</span> Vidyut_Poddar_Resume.pdf</span>
+            <span style="color:var(--amber)">→</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       FOOTER
+       ============================================================ -->
+  <footer>
+    <div class="container footer-inner">
+      <div>
+        <span style="color:var(--muted)">// built by Vidyut</span> · <span class="mono" id="year"></span>
+      </div>
+      <div>
+        <a href="#home">↑ back to top</a>
+        &nbsp;·&nbsp;
+        <a href="https://www.linkedin.com/in/vidyut-poddar-6b5332109/" target="_blank" rel="noopener">linkedin</a>
+        &nbsp;·&nbsp;
+        <a href="mailto:vidyutpoddar@gmail.com">email</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // -----------------------------------------------------------
+    // year
+    // -----------------------------------------------------------
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // -----------------------------------------------------------
+    // theme toggle
+    // -----------------------------------------------------------
+    const html = document.documentElement;
+    const themeToggle = document.getElementById("themeToggle");
+    const saved = localStorage.getItem("vp-theme");
+    if (saved) html.setAttribute("data-theme", saved);
+    themeToggle?.addEventListener("click", () => {
+      const next = html.getAttribute("data-theme") === "dark" ? "light" : "dark";
+      html.setAttribute("data-theme", next);
+      localStorage.setItem("vp-theme", next);
+    });
+
+    // -----------------------------------------------------------
+    // mobile nav
+    // -----------------------------------------------------------
+    const mobileToggle = document.getElementById("mobileToggle");
+    const navLinks = document.getElementById("navLinks");
+    mobileToggle?.addEventListener("click", () => navLinks.classList.toggle("open"));
+    document.querySelectorAll(".nav-links a").forEach(a => {
+      a.addEventListener("click", () => navLinks.classList.remove("open"));
+    });
+
+    // -----------------------------------------------------------
+    // typed role (one-shot, no loop)
+    // -----------------------------------------------------------
+    (function typedRole() {
+      const target = document.getElementById("typed");
+      const phrase = "account-specialist · solutions-engineer · technical-cs";
+      let i = 0;
+      const tick = () => {
+        if (!target) return;
+        target.textContent = phrase.slice(0, i);
+        if (i < phrase.length) {
+          i++;
+          setTimeout(tick, 35);
+        }
+      };
+      tick();
+    })();
+
+    // -----------------------------------------------------------
+    // localtime in Chennai (IST)
+    // -----------------------------------------------------------
+    function renderLocalTime() {
+      const el = document.getElementById("localtime");
+      if (!el) return;
+      const now = new Date();
+      const fmt = new Intl.DateTimeFormat("en-IN", {
+        timeZone: "Asia/Kolkata",
+        hour: "2-digit",
+        minute: "2-digit",
+        hour12: false,
+      });
+      el.textContent = "currently " + fmt.format(now) + " IST";
+    }
+    renderLocalTime();
+    setInterval(renderLocalTime, 30 * 1000);
+
+    // -----------------------------------------------------------
+    // animated counters
+    // -----------------------------------------------------------
+    function animateCount(el) {
+      const target = parseInt(el.dataset.count, 10);
+      const suffix = el.dataset.suffix || "";
+      const dur = 1400;
+      const start = performance.now();
+      const startVal = 0;
+      function step(now) {
+        const t = Math.min(1, (now - start) / dur);
+        const eased = 1 - Math.pow(1 - t, 3);
+        const v = Math.round(startVal + (target - startVal) * eased);
+        el.textContent = v + suffix;
+        if (t < 1) requestAnimationFrame(step);
+      }
+      requestAnimationFrame(step);
+    }
+
+    // -----------------------------------------------------------
+    // reveal on scroll + counter trigger
+    // -----------------------------------------------------------
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add("is-visible");
+          e.target.querySelectorAll(".stat-num[data-count]").forEach(el => {
+            if (!el.dataset.done) {
+              el.dataset.done = "1";
+              animateCount(el);
+            }
+          });
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.15 });
+
+    document.querySelectorAll(".reveal, .section").forEach(el => io.observe(el));
+
+    // -----------------------------------------------------------
+    // nav scrollspy
+    // -----------------------------------------------------------
+    const sections = document.querySelectorAll("section[id]");
+    const navAnchors = document.querySelectorAll(".nav-links a[href^='#']");
+    const spy = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          const id = e.target.id;
+          navAnchors.forEach(a => {
+            a.classList.toggle("active", a.getAttribute("href") === "#" + id);
+          });
+        }
+      });
+    }, { rootMargin: "-30% 0px -60% 0px" });
+    sections.forEach(s => spy.observe(s));
+
+    // -----------------------------------------------------------
+    // easter egg: 5 clicks on logo
+    // -----------------------------------------------------------
+    (function () {
+      const mark = document.getElementById("logoMark");
+      if (!mark) return;
+      let count = 0;
+      mark.addEventListener("click", () => {
+        count++;
+        if (count === 5) {
+          mark.textContent = "♥";
+          setTimeout(() => { mark.textContent = "vp"; count = 0; }, 1800);
+          console.log("%c hi! thanks for poking around. — vidyut", "color:#FF8A4C; font-family:monospace; font-size:14px;");
+        }
+      });
+    })();
+
+    // -----------------------------------------------------------
+    // console signature
+    // -----------------------------------------------------------
+    console.log("%c $ whoami", "color:#FF8A4C; font-family:monospace; font-size:14px;");
+    console.log("%c Vidyut Poddar — Account Specialist @ HighLevel\n vidyutpoddar@gmail.com", "color:#06B6D4; font-family:monospace; font-size:12px; line-height:1.6;");
+  </script>
+</body>
+</html>
