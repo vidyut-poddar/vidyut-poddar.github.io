@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Restoring 700+ sub-accounts in a week — Vidyut Poddar</title>
+  <meta name="description" content="An enterprise customer accidentally deleted everything. Engineering said the fix wasn't coming. We had a week. What we did, what it cost, and what it actually taught me about retention." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="blog.css" />
+</head>
+<body>
+
+  <nav class="post-nav">
+    <div class="container">
+      <a class="back" href="../index.html">← vidyut.poddar</a>
+      <div class="meta">Jan 2026 · 5 min read</div>
+    </div>
+  </nav>
+
+  <article>
+    <div class="container">
+      <div class="post-tag">Story · Retention</div>
+      <h1 class="post-title">Restoring 700+ sub-accounts in a week.</h1>
+      <p class="post-deck">An enterprise customer accidentally deleted almost their entire account. Engineering said the fix wasn't coming. We had a week. Here's what actually happened, and the unsexy lesson it taught me about retention.</p>
+
+      <div class="post-byline">
+        <span class="author">Vidyut Poddar</span>
+        <span class="dot">·</span>
+        <span>Account Specialist @ HighLevel</span>
+      </div>
+
+      <div class="post-body">
+
+        <p>The ticket landed at the wrong time of day. It always does.</p>
+
+        <p>One of our biggest enterprise customers — a coaching mastermind running their entire client base inside the platform — had just accidentally deleted 700+ sub-accounts. Every one of those sub-accounts represented a downstream customer, with workflows, contacts, conversations, calendars, automations. Years of work, deleted in an afternoon.</p>
+
+        <p>The customer was, understandably, not in a great place. They asked what we could do. The first answer back from engineering was: there's no automated path to restore at this volume. Not won't, but can't.</p>
+
+        <p>The customer had four days before the consequences of this started being felt by their own clients. We had to decide what to do.</p>
+
+        <h2>The decision</h2>
+
+        <p>The decision wasn't really technical. It was about what kind of company we wanted to be in this moment.</p>
+
+        <p>The technical posture available to us was "this is the customer's error, our platform behaved correctly, we can't restore deleted data at this scale." That's a defensible position. It's also the position that gets you on the wrong end of a contract review and a churn email six months later.</p>
+
+        <p>The other posture was: <strong>it doesn't matter whose fault this is. The customer is in a hole. Our job is to get them out, even if it has to be done by hand.</strong></p>
+
+        <p>We chose the second one. Not because anyone told us to. Because two of us looked at each other and agreed it was the right thing.</p>
+
+        <h2>What we actually did</h2>
+
+        <p>What followed was a week of doing the work that "can't be done at scale" — at scale, manually, by humans.</p>
+
+        <p>Three of us — me, our account lead, and an engineer who quietly cleared his calendar — spent that week restoring sub-accounts one batch at a time. Not literally one at a time; the engineer found patterns we could automate over the course of a few hours, and we ran those patterns repeatedly, with manual checks in between. We worked across time zones. We slept badly. The customer's POC stayed on Slack with us until almost every restoration was confirmed by their end.</p>
+
+        <p>By the end of the week, every sub-account that needed to come back had come back. The customer's downstream clients didn't notice anything had happened, because nothing had — by the time they would have noticed, the data was already where it was supposed to be.</p>
+
+        <h2>What it cost</h2>
+
+        <p>Let's be honest about the cost:</p>
+
+        <ul>
+          <li>About a week of effective time across three people.</li>
+          <li>A handful of other tickets I should have been working got moved by my teammates while I was head-down on this.</li>
+          <li>Some sleep.</li>
+          <li>A few small, careful conversations internally about what we'd do <em>next time</em> something like this happened — because next time we wouldn't be able to drop everything in the same way for every customer.</li>
+        </ul>
+
+        <p>That last one matters. The story is not "we'll do this for every customer, every time." It's not scalable, and the people who'd be expected to do it would burn out. The story is "we'll do this for the customers and the moments where it's the right call, and we will be honest with ourselves about which moments those are."</p>
+
+        <h2>What it earned</h2>
+
+        <p>The customer stayed. That was the explicit thing.</p>
+
+        <p>The implicit thing was harder to measure but, in retrospect, more valuable. The customer's leadership knew, with specificity, what we'd done for them. They knew it wasn't a bot or a template or a runbook. They knew it was three named humans on the other end. The relationship after that point didn't look like the relationship before that point.</p>
+
+        <p>Months later, the same customer's POC asked me to weigh in on a totally unrelated technical question. Not because I owned the account anymore. Because the trust was built. That trust pays dividends in ways you can't put on a quarterly slide.</p>
+
+        <h2>The lesson</h2>
+
+        <p>The takeaway here isn't "always do the heroic restoration." It's narrower than that.</p>
+
+        <p><strong>Retention is sometimes earned in a single decision, made in the first hour after something has gone wrong.</strong></p>
+
+        <p>In that hour, the customer is watching. Not for the fix — they don't expect a fix yet. They're watching for what kind of relationship this is. Is it the kind where the vendor disappears behind a contract and a "this is unfortunately not covered" email? Or is it the kind where someone picks up the phone and says "we'll figure this out together"?</p>
+
+        <p>You don't get many of those moments. You don't always have the resources to take the second posture. But when you do — when the situation warrants it and you have the runway — that's the moment where retention is actually made or lost.</p>
+
+        <div class="callout">
+          <div class="callout-label">// the unsexy summary</div>
+          <p style="margin:0">The deciding factor wasn't a tool. It wasn't a process. It wasn't a clever workaround. It was a decision about what kind of vendor we wanted to be in a moment when no one was watching except the people in the room.</p>
+        </div>
+
+        <h2>If you take one thing</h2>
+
+        <p>If you take one thing from this story: in the first hour after a customer disaster, before you write the formal response, ask yourself whether this is one of the moments where the relationship is being defined. If it is, act accordingly. If it isn't, respond professionally and move on. Both are valid. Knowing which moment you're in is the skill.</p>
+
+        <p>And if you're the customer reading this — the one wondering whether to flag the disaster: flag it. The vendors that are worth keeping will respond. The ones that aren't will reveal themselves. Either way, you'll know more about who you're working with by the end of the week.</p>
+
+        <hr class="post-divider" />
+
+        <p style="color:var(--muted); font-size:15px;"><em>Stories like this aren't unique to GHL or to any one platform. If you've got one of your own and want to compare notes — <a href="../index.html#contact">drop me a line</a>.</em></p>
+
+        <div class="post-footer">
+          <a href="../index.html#notes">← All writing</a>
+          <a href="../index.html#contact">Get in touch</a>
+          <span class="signoff">vidyut.poddar // 2026</span>
+        </div>
+      </div>
+    </div>
+  </article>
+</body>
+</html>
